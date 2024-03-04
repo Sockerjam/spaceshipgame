@@ -14,7 +14,7 @@ class GameScene {
     }()
     
     lazy var backgroundTexture: MTLTexture? = {
-        TextureLoader.texture(from: "milkyway", device: MainRenderer.device)
+        TextureLoader.texture(from: "milkywayHD", device: MainRenderer.device)
     }()
     
     let staticCamera = StaticCamera()

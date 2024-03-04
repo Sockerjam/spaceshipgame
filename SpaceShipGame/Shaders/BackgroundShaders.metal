@@ -35,7 +35,7 @@ vertex VertexOut backgroundVertex(const VertexIn in [[stage_in]],
 {
     float4 position = in.position;
     float2 uvRotated = rotateUV(in.uv);
-    float2 scaledUV = uvRotated * 2;
+    float2 scaledUV = uvRotated;
     VertexOut out {
         .position = position,
         .uv = scaledUV,
@@ -57,7 +57,7 @@ fragment float4 backgroundFragment(const VertexOut in [[stage_in]],
                                      
                                      mip_filter::linear,
                                      max_anisotropy(8),
-                                     address::mirrored_repeat);
+                                     address::repeat);
     
     float4 color = backgroundTexture.sample(textureSampler, uv) * 2;
     
