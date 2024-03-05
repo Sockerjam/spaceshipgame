@@ -7,23 +7,9 @@
 
 import MetalKit
 
-class BackgroundRenderer {
+class BackgroundRenderer: Renderer {
     
-    private var pipelineState: MTLRenderPipelineState?
-    private var depthStencilState: MTLDepthStencilState?
-    
-    var gameScene: GameScene
-    
-    private var elapsedTime: Float = 0
-    
-    init(gameScene: GameScene, device: MTLDevice?) {
-        
-        self.gameScene = gameScene
-        setupPipelineState(with: device)
-        setupDepthStencilState(with: device)
-    }
-    
-    private func setupPipelineState(with device: MTLDevice?) {
+    override func setupPipelineState(with device: MTLDevice?) {
         
         guard let device = device else { return }
         
@@ -46,7 +32,7 @@ class BackgroundRenderer {
         }
     }
     
-    private func setupDepthStencilState(with device: MTLDevice?) {
+    override func setupDepthStencilState(with device: MTLDevice?) {
         
         guard let device = device else { return }
         
@@ -56,12 +42,7 @@ class BackgroundRenderer {
         self.depthStencilState = device.makeDepthStencilState(descriptor: depthStencilDescriptor)
     }
     
-    private func textureDescriptor() {
-        let descriptor = MTLTextureDescriptor()
-       
-    }
-    
-    func render(commandEncoder: MTLRenderCommandEncoder, uniform: Uniform, time: Float) {
+    override func render(commandEncoder: MTLRenderCommandEncoder, uniform: Uniform, time: Float) {
         
         guard let pipelineState = pipelineState,
               let depthStencilState = depthStencilState

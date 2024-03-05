@@ -24,6 +24,8 @@
 		57345F702B91D7C4002ACE66 /* BackgroundRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57345F6F2B91D7C4002ACE66 /* BackgroundRenderer.swift */; };
 		57345F732B91FC2B002ACE66 /* StaticCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57345F722B91FC2B002ACE66 /* StaticCamera.swift */; };
 		57345F752B91FC70002ACE66 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57345F742B91FC70002ACE66 /* Utility.swift */; };
+		57D13A122B977ED900DF1E6C /* MidgroundRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D13A112B977ED900DF1E6C /* MidgroundRenderer.swift */; };
+		57D13A142B977F1400DF1E6C /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D13A132B977F1400DF1E6C /* Renderer.swift */; };
 		57DC9B4A2B923DAB0008009F /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DC9B492B923DAB0008009F /* Transform.swift */; };
 		57DC9B4C2B9245CB0008009F /* BackgroundShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 57DC9B4B2B9245CB0008009F /* BackgroundShaders.metal */; };
 		57F3174E2B9538B800E8DFFE /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 57F3174D2B9538B800E8DFFE /* test.jpg */; };
@@ -50,6 +52,8 @@
 		57345F712B91D8D4002ACE66 /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		57345F722B91FC2B002ACE66 /* StaticCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticCamera.swift; sourceTree = "<group>"; };
 		57345F742B91FC70002ACE66 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		57D13A112B977ED900DF1E6C /* MidgroundRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidgroundRenderer.swift; sourceTree = "<group>"; };
+		57D13A132B977F1400DF1E6C /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		57DC9B492B923DAB0008009F /* Transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
 		57DC9B4B2B9245CB0008009F /* BackgroundShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BackgroundShaders.metal; sourceTree = "<group>"; };
 		57F3174D2B9538B800E8DFFE /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
@@ -125,8 +129,10 @@
 		57345F3C2B907FC1002ACE66 /* Renderers */ = {
 			isa = PBXGroup;
 			children = (
+				57D13A132B977F1400DF1E6C /* Renderer.swift */,
 				57345F442B9081B6002ACE66 /* MainRenderer.swift */,
 				57345F6F2B91D7C4002ACE66 /* BackgroundRenderer.swift */,
+				57D13A112B977ED900DF1E6C /* MidgroundRenderer.swift */,
 			);
 			path = Renderers;
 			sourceTree = "<group>";
@@ -258,6 +264,7 @@
 			files = (
 				57345F732B91FC2B002ACE66 /* StaticCamera.swift in Sources */,
 				57345F702B91D7C4002ACE66 /* BackgroundRenderer.swift in Sources */,
+				57D13A122B977ED900DF1E6C /* MidgroundRenderer.swift in Sources */,
 				57345F6E2B91D5B9002ACE66 /* GameScene.swift in Sources */,
 				57345F492B9082E4002ACE66 /* Model.swift in Sources */,
 				57345F682B9100CA002ACE66 /* Quad.swift in Sources */,
@@ -269,6 +276,7 @@
 				57345F452B9081B6002ACE66 /* MainRenderer.swift in Sources */,
 				57DC9B4A2B923DAB0008009F /* Transform.swift in Sources */,
 				57345F6A2B91151C002ACE66 /* Vertex.swift in Sources */,
+				57D13A142B977F1400DF1E6C /* Renderer.swift in Sources */,
 				57345F2F2B907FA9002ACE66 /* ContentView.swift in Sources */,
 				57345F2D2B907FA9002ACE66 /* SpaceShipGameApp.swift in Sources */,
 			);

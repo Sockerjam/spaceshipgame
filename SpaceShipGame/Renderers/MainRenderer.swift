@@ -37,7 +37,6 @@ class MainRenderer: NSObject {
         self.backgroundRenderer = BackgroundRenderer(gameScene: gameScene, device: MainRenderer.device)
         
         super.init()
-//        metalView.colorPixelFormat = .rgba8Unorm
         metalView.depthStencilPixelFormat = .depth32Float
         metalView.device = MainRenderer.device
         metalView.delegate = self

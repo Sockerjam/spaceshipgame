@@ -48,7 +48,7 @@ vertex VertexOut backgroundVertex(const VertexIn in [[stage_in]],
 fragment float4 backgroundFragment(const VertexOut in [[stage_in]],
                                    texture2d<float> backgroundTexture [[texture(BackgroundTextureIndex)]])
 {
-    float speed = in.time * 0.0025;
+    float speed = in.time * 0.0005;
     float colorSpeed = saturate(cos(speed));
     float2 uv = in.uv;
     uv.x += speed;
