@@ -53,14 +53,9 @@ class BackgroundRenderer: Renderer {
         commandEncoder.setRenderPipelineState(pipelineState)
         commandEncoder.setDepthStencilState(depthStencilState)
         
-        var uniform = uniform
-        
-        uniform.modelMatrix = matrix_identity_float4x4
-        
         elapsedTime += time
         
         commandEncoder.setVertexBuffer(gameScene.backgroundModel.vertexBuffer, offset: 0, index: BackgroundVertexIndex.index)
-        commandEncoder.setVertexBytes(&uniform, length: MemoryLayout<Uniform>.size, index: UniformIndex.index)
         commandEncoder.setVertexBytes(&elapsedTime, length: MemoryLayout<Float>.size, index: TimeIndex.index)
         
         commandEncoder.setFragmentTexture(gameScene.backgroundTexture, index: BackgroundTextureIndex.index)

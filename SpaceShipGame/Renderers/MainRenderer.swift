@@ -18,6 +18,7 @@ class MainRenderer: NSObject {
     
     private var gameScene: GameScene
     private var backgroundRenderer: BackgroundRenderer
+    private var midgroundRenderer: MidgroundRenderer
     
     private var uniform = Uniform()
     private var startTime: Double = CFAbsoluteTimeGetCurrent()
@@ -35,6 +36,7 @@ class MainRenderer: NSObject {
         
         self.gameScene = GameScene()
         self.backgroundRenderer = BackgroundRenderer(gameScene: gameScene, device: MainRenderer.device)
+        self.midgroundRenderer = MidgroundRenderer(gameScene: gameScene, device: MainRenderer.device)
         
         super.init()
         metalView.depthStencilPixelFormat = .depth32Float
@@ -72,6 +74,8 @@ extension MainRenderer: MTKViewDelegate {
         uniform.projectionMatrix = gameScene.staticCamera.projectionMatrix
         
         backgroundRenderer.render(commandEncoder: commandEncoder, uniform: uniform, time: deltaTime)
+        
+        midgroundRenderer.render(commandEncoder: commandEncoder, uniform: uniform, time: deltaTime)
         
         commandEncoder.endEncoding()
         guard let drawable = view.currentDrawable else { return }

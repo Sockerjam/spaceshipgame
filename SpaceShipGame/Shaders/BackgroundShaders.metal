@@ -7,30 +7,11 @@
 
 #include <metal_stdlib>
 #include "Common.h"
+#include "Helpers.h"
 
 using namespace metal;
 
-struct VertexIn {
-    float4 position [[attribute(0)]];
-    float2 uv [[attribute(1)]];
-};
-
-struct VertexOut {
-    float4 position [[position]];
-    float2 uv;
-    float time;
-};
-
-float2 rotateUV(float2 uv)
-{
-    float2x2 matrix (cos(M_PI_2_F), -sin(M_PI_2_F),
-                     sin(M_PI_2_F), cos(M_PI_2_F));
-    
-    return matrix * uv;
-};
-
 vertex VertexOut backgroundVertex(const VertexIn in [[stage_in]],
-                                  constant Uniform &uniform [[buffer(UniformIndex)]],
                                   constant float &time [[buffer(TimeIndex)]])
 {
     float4 position = in.position;
