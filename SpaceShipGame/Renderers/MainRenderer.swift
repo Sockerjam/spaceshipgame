@@ -57,10 +57,19 @@ extension MainRenderer: MTKViewDelegate {
     func draw(in view: MTKView) {
         
         guard let commandBuffer = MainRenderer.commandQueue?.makeCommandBuffer(),
-              let renderPassDescriptor = view.currentRenderPassDescriptor,
-              let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor)
+              let renderPassDescriptor = view.currentRenderPassDescriptor
         else {
-            print("draw(in_:) error")
+            print("Command or Render Pass Error")
+            return
+        }
+        
+        renderPassDescriptor.colorAttachments[0].loadAction = .clear
+        renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColorMake(0.0, 0.0, 0.0, 1.0)
+        renderPassDescriptor.depthAttachment.loadAction = .clear
+        renderPassDescriptor.depthAttachment.clearDepth = 1.0
+                
+        guard let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor) else {
+            print("Command Encoder Error")
             return
         }
         
@@ -71,11 +80,11 @@ extension MainRenderer: MTKViewDelegate {
         gameScene.update(time: deltaTime)
         
         uniform.viewMatrix = gameScene.staticCamera.viewMatrix
-        uniform.projectionMatrix = gameScene.staticCamera.projectionMatrix
+        uniform.projectionMatrix = gameScene.staticCamera.orthographicMatrix
         
         backgroundRenderer.render(commandEncoder: commandEncoder, uniform: uniform, time: deltaTime)
         
-        midgroundRenderer.render(commandEncoder: commandEncoder, uniform: uniform, time: deltaTime)
+//        midgroundRenderer.render(commandEncoder: commandEncoder, uniform: uniform, time: deltaTime)
         
         commandEncoder.endEncoding()
         guard let drawable = view.currentDrawable else { return }

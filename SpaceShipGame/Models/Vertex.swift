@@ -10,6 +10,6 @@ import simd
 
 struct Vertex {
     
-    let position: SIMD2<Float>
+    let position: SIMD3<Float>
     let textureCoordinate: SIMD2<Float>
 }

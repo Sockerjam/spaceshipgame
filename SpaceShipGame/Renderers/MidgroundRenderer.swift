@@ -44,7 +44,7 @@ class MidgroundRenderer: Renderer {
         guard let device = device else { return }
         
         let depthStencilDescriptor = MTLDepthStencilDescriptor()
-        depthStencilDescriptor.depthCompareFunction = .always
+        depthStencilDescriptor.depthCompareFunction = .less
         depthStencilDescriptor.isDepthWriteEnabled = true
         self.depthStencilState = device.makeDepthStencilState(descriptor: depthStencilDescriptor)
     }
@@ -58,6 +58,7 @@ class MidgroundRenderer: Renderer {
         }
         
         commandEncoder.setRenderPipelineState(pipelineState)
+        commandEncoder.setDepthStencilState(depthStencilState)
         
         elapsedTime += time
         

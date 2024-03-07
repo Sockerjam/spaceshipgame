@@ -26,30 +26,35 @@ vertex VertexOut midgroundVertex(const VertexIn in [[stage_in]],
 
 fragment float4 midgroundFragment(const VertexOut in [[stage_in]])
 {
-    
-    float4 centers = float4(in.time, cos(in.time), sin(in.time / 2), cos(in.time / 4));
-    
-    float animation = saturate(sin(in.time / 8));
-    
-    float radius = 0.002;
-    
-    
-    float4 colorInsideCircle = float4(1, 1, 1, animation);
-    float4 colorOutsideCircle = float4(0);
-    
-    for (int i = 0; i < 4; i++)
+    if (in.time > 10)
     {
-        float2 center = float2(centers[i], animation * saturate(sin(animation)));
-        float2 directionVector = in.uv - center;
-        float magnitude = length(directionVector);
+        float time = in.time - 10;
         
-        if (magnitude <= radius)
+        float4 centers = float4(time, cos(time), sin(time / 2), cos(time / 4));
+        
+        float animation = saturate(sin(time / 8));
+        
+        float radius = 0.0025;
+        
+        float4 colorInsideCircle = float4(1, 0.5, 1, animation);
+        float4 colorOutsideCircle = float4(0);
+        
+        for (int i = 0; i < 4; i++)
         {
-            return colorInsideCircle;
+            float2 center = float2(centers[i], animation * saturate(sin(animation)));
+            float2 directionVector = in.uv - center;
+            float magnitude = length(directionVector);
+            
+            if (magnitude <= radius)
+            {
+                return colorInsideCircle;
+            }
+            
         }
         
+        return colorOutsideCircle;
     }
     
-    return colorOutsideCircle;
+    return float4(0);
     
 };
