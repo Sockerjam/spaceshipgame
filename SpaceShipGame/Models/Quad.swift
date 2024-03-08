@@ -43,14 +43,6 @@ class Quad {
         self.vertexBuffer = vertexBuffer
         self.indexBuffer = indexBuffer
         
-//        print(
-//          MemoryLayout<Vertex>.stride,
-//          MemoryLayout<SIMD3<Float>>.stride,
-//          MemoryLayout<SIMD2<Float>>.stride,
-//          MemoryLayout<SIMD3<Float>>.stride +
-//                MemoryLayout<SIMD2<Float>>.stride)
-        
-        print(MemoryLayout<Vertex>.size, MemoryLayout<Vertex>.stride)
     }
     
     

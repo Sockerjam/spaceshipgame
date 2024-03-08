@@ -15,12 +15,12 @@ vertex VertexOut backgroundVertex(const VertexIn in [[stage_in]],
                                   constant float &time [[buffer(TimeIndex)]],
                                   constant Uniform &uniform [[buffer(UniformIndex)]])
 {
-    float4 position = in.position;
+    float4 position = uniform.projectionMatrix * uniform.viewMatrix * in.position;
     float2 uvRotated = rotateUV(in.uv);
     float2 scaledUV = uvRotated;
     VertexOut out {
         .position = position,
-        .uv = scaledUV,
+        .uv = in.uv,
         .time = time
     };
     
@@ -43,5 +43,6 @@ fragment float4 backgroundFragment(const VertexOut in [[stage_in]],
     
     float4 color = backgroundTexture.sample(textureSampler, uv) * 2;
     
-    return float4(color.r * (1 - colorSpeed), color.g * colorSpeed, color.b, color.a);
+//    return float4(color.r * (1 - colorSpeed), color.g * colorSpeed, color.b, color.a);
+    return float(1);
 };

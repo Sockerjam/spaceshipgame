@@ -26,7 +26,7 @@ extension MTLVertexDescriptor {
         descriptor.attributes[0].bufferIndex = 0
         
         descriptor.attributes[1].format = .float2
-        descriptor.attributes[1].offset = MemoryLayout<SIMD2<Float>>.stride
+        descriptor.attributes[1].offset = MemoryLayout<SIMD3<Float>>.stride
         descriptor.attributes[1].bufferIndex = 0
         
         descriptor.layouts[0].stride = MemoryLayout<SIMD3<Float>>.stride + MemoryLayout<SIMD2<Float>>.stride
