@@ -9,11 +9,18 @@ import MetalKit
 
 class Quad {
     
+    let oldvertices: [OldVertex] = [
+        OldVertex(position: [-1, 1, 1], textureCoordinate: [0, 1]),
+        OldVertex(position: [1, 1, 1], textureCoordinate: [1, 1]),
+        OldVertex(position: [1, -1, 1], textureCoordinate: [1, 0]),
+        OldVertex(position: [-1, -1, 1], textureCoordinate: [0, 0])
+    ]
+    
     let vertices: [Vertex] = [
-        Vertex(position: [-1, 1], textureCoordinate: [0, 1]),
-        Vertex(position: [1, 1], textureCoordinate: [1, 1]),
-        Vertex(position: [1, -1], textureCoordinate: [1, 0]),
-        Vertex(position: [-1, -1], textureCoordinate: [0, 0])
+        Vertex(position: Position(x: -1, y: 1, z: 1), textureCoordinate: [0, 1]),
+        Vertex(position: Position(x: 1, y: 1, z: 1), textureCoordinate: [1, 1]),
+        Vertex(position: Position(x: 1, y: -1, z: 1), textureCoordinate: [1, 0]),
+        Vertex(position: Position(x: -1, y: -1, z: 1), textureCoordinate: [0, 0])
     ]
     
     let indices: [UInt16] = [
@@ -35,5 +42,16 @@ class Quad {
         
         self.vertexBuffer = vertexBuffer
         self.indexBuffer = indexBuffer
+        
+//        print(
+//          MemoryLayout<Vertex>.stride,
+//          MemoryLayout<SIMD3<Float>>.stride,
+//          MemoryLayout<SIMD2<Float>>.stride,
+//          MemoryLayout<SIMD3<Float>>.stride +
+//                MemoryLayout<SIMD2<Float>>.stride)
+        
+        print(MemoryLayout<Vertex>.size, MemoryLayout<Vertex>.stride)
     }
+    
+    
 }

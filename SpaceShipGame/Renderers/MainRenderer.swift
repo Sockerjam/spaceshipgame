@@ -57,12 +57,18 @@ extension MainRenderer: MTKViewDelegate {
     func draw(in view: MTKView) {
         
         guard let commandBuffer = MainRenderer.commandQueue?.makeCommandBuffer(),
-              let renderPassDescriptor = view.currentRenderPassDescriptor,
-              let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor)
+              let renderPassDescriptor = view.currentRenderPassDescriptor
         else {
             print("draw(in_:) error")
             return
         }
+        
+        renderPassDescriptor.colorAttachments[0].loadAction = .clear
+        renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColorMake(0.0, 0.0, 0.0, 1.0)
+        renderPassDescriptor.depthAttachment.loadAction = .clear
+        renderPassDescriptor.depthAttachment.clearDepth = 1.0
+        
+        guard  let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor) else { return }
         
         let currentTime = CFAbsoluteTimeGetCurrent()
         let deltaTime = Float(currentTime - startTime)
@@ -75,7 +81,7 @@ extension MainRenderer: MTKViewDelegate {
         
         backgroundRenderer.render(commandEncoder: commandEncoder, uniform: uniform, time: deltaTime)
         
-        midgroundRenderer.render(commandEncoder: commandEncoder, uniform: uniform, time: deltaTime)
+//        midgroundRenderer.render(commandEncoder: commandEncoder, uniform: uniform, time: deltaTime)
         
         commandEncoder.endEncoding()
         guard let drawable = view.currentDrawable else { return }

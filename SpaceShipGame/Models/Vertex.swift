@@ -8,8 +8,20 @@
 import Foundation
 import simd
 
+struct OldVertex {
+    
+    let position: SIMD3<Float>
+    let textureCoordinate: SIMD2<Float>
+}
+
+struct Position {
+    let x: Float
+    let y: Float
+    let z: Float
+}
+
 struct Vertex {
     
-    let position: SIMD2<Float>
+    let position: Position
     let textureCoordinate: SIMD2<Float>
 }
