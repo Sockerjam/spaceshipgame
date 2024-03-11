@@ -37,8 +37,8 @@ class BackgroundRenderer: Renderer {
         guard let device = device else { return }
         
         let depthStencilDescriptor = MTLDepthStencilDescriptor()
-        depthStencilDescriptor.depthCompareFunction = .less
-        depthStencilDescriptor.isDepthWriteEnabled = false
+        depthStencilDescriptor.depthCompareFunction = .lessEqual
+        depthStencilDescriptor.isDepthWriteEnabled = true
         self.depthStencilState = device.makeDepthStencilState(descriptor: depthStencilDescriptor)
     }
     
@@ -55,8 +55,11 @@ class BackgroundRenderer: Renderer {
         
         elapsedTime += time
         
+        var uniform = uniform
+        
         commandEncoder.setVertexBuffer(gameScene.backgroundModel.vertexBuffer, offset: 0, index: BackgroundVertexIndex.index)
         commandEncoder.setVertexBytes(&elapsedTime, length: MemoryLayout<Float>.size, index: TimeIndex.index)
+        commandEncoder.setVertexBytes(&uniform, length: MemoryLayout<Uniform>.stride, index: UniformIndex.index)
         
         commandEncoder.setFragmentTexture(gameScene.backgroundTexture, index: BackgroundTextureIndex.index)
         

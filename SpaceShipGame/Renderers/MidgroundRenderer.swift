@@ -44,7 +44,7 @@ class MidgroundRenderer: Renderer {
         guard let device = device else { return }
         
         let depthStencilDescriptor = MTLDepthStencilDescriptor()
-        depthStencilDescriptor.depthCompareFunction = .always
+        depthStencilDescriptor.depthCompareFunction = .less
         depthStencilDescriptor.isDepthWriteEnabled = true
         self.depthStencilState = device.makeDepthStencilState(descriptor: depthStencilDescriptor)
     }
@@ -58,10 +58,11 @@ class MidgroundRenderer: Renderer {
         }
         
         commandEncoder.setRenderPipelineState(pipelineState)
+        commandEncoder.setDepthStencilState(depthStencilState)
         
         elapsedTime += time
         
-        commandEncoder.setVertexBuffer(gameScene.backgroundModel.vertexBuffer, offset: 0, index: BackgroundVertexIndex.index)
+        commandEncoder.setVertexBuffer(gameScene.midgroundModel.vertexBuffer, offset: 0, index: BackgroundVertexIndex.index)
         commandEncoder.setVertexBytes(&elapsedTime, length: MemoryLayout<Float>.size, index: TimeIndex.index)
         
         guard let indexBuffer = gameScene.backgroundModel.indexBuffer else { return }

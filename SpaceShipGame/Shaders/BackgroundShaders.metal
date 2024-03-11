@@ -12,14 +12,15 @@
 using namespace metal;
 
 vertex VertexOut backgroundVertex(const VertexIn in [[stage_in]],
-                                  constant float &time [[buffer(TimeIndex)]])
+                                  constant float &time [[buffer(TimeIndex)]],
+                                  constant Uniform &uniform [[buffer(UniformIndex)]])
 {
-    float4 position = in.position;
+    float4 position = uniform.viewMatrix * in.position;
     float2 uvRotated = rotateUV(in.uv);
     float2 scaledUV = uvRotated;
     VertexOut out {
         .position = position,
-        .uv = scaledUV,
+        .uv = in.uv,
         .time = time
     };
     

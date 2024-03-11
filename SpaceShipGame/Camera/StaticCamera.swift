@@ -9,20 +9,21 @@ import Foundation
 
 class StaticCamera {
     
-    private var aspectRatio: Float = 1
-    private let fov = Float(70).degreesToRadians
-    private let near: Float = 0.01
-    private let far: Float = 100
+    var aspect: CGFloat = 1
+    var viewSize: CGFloat = 10
+    var near: Float = 0.1
+    var far: Float = 10
     
     var viewMatrix: float4x4 {
-        float4x4(translation: [0, 0, -3]).inverse
+        return float4x4(translation: [0, 0, 0]).inverse
     }
     
-    var projectionMatrix: float4x4 {
-        float4x4(projectionFov: fov, near: near, far: far, aspect: aspectRatio)
+    var orthographicMatrix: float4x4 {
+        let rect = CGRect(x: -viewSize * aspect * 0.5, y: viewSize * 0.5, width: viewSize * aspect, height: viewSize)
+        return float4x4(orthographic: rect, near: near, far: far)
     }
     
     func update(size: CGSize) {
-        aspectRatio = Float(size.width / size.height)
+        aspect = size.width / size.height
     }
 }

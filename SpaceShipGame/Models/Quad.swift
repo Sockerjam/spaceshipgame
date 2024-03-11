@@ -9,12 +9,7 @@ import MetalKit
 
 class Quad {
     
-    let vertices: [Vertex] = [
-        Vertex(position: [-1, 1], textureCoordinate: [0, 1]),
-        Vertex(position: [1, 1], textureCoordinate: [1, 1]),
-        Vertex(position: [1, -1], textureCoordinate: [1, 0]),
-        Vertex(position: [-1, -1], textureCoordinate: [0, 0])
-    ]
+    var vertices: [Vertex] = []
     
     let indices: [UInt16] = [
         0, 2, 3,
@@ -24,7 +19,14 @@ class Quad {
     var vertexBuffer: MTLBuffer?
     var indexBuffer: MTLBuffer?
     
-    init(device: MTLDevice?) {
+    init(depth: Float, device: MTLDevice?) {
+        
+        vertices = [
+            Vertex(position: Position(x: -1, y: 1, z: depth), textureCoordinate: [0, 1]),
+            Vertex(position: Position(x: 1, y: 1, z: depth), textureCoordinate: [1, 1]),
+            Vertex(position: Position(x: 1, y: -1, z: depth), textureCoordinate: [1, 0]),
+            Vertex(position: Position(x: -1, y: -1, z: depth), textureCoordinate: [0, 0])
+            ]
         
         guard let device = device,
               let vertexBuffer = device.makeBuffer(bytes: &vertices, length: MemoryLayout<Vertex>.stride * vertices.count),
@@ -35,5 +37,8 @@ class Quad {
         
         self.vertexBuffer = vertexBuffer
         self.indexBuffer = indexBuffer
+        
     }
+    
+    
 }

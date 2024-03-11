@@ -57,12 +57,13 @@ extension MainRenderer: MTKViewDelegate {
     func draw(in view: MTKView) {
         
         guard let commandBuffer = MainRenderer.commandQueue?.makeCommandBuffer(),
-              let renderPassDescriptor = view.currentRenderPassDescriptor,
-              let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor)
+              let renderPassDescriptor = view.currentRenderPassDescriptor
         else {
             print("draw(in_:) error")
             return
         }
+        
+        guard  let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor) else { return }
         
         let currentTime = CFAbsoluteTimeGetCurrent()
         let deltaTime = Float(currentTime - startTime)
@@ -71,7 +72,7 @@ extension MainRenderer: MTKViewDelegate {
         gameScene.update(time: deltaTime)
         
         uniform.viewMatrix = gameScene.staticCamera.viewMatrix
-        uniform.projectionMatrix = gameScene.staticCamera.projectionMatrix
+        uniform.projectionMatrix = gameScene.staticCamera.orthographicMatrix
         
         backgroundRenderer.render(commandEncoder: commandEncoder, uniform: uniform, time: deltaTime)
         
