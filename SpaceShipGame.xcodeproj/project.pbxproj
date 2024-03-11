@@ -8,7 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		5707F6C02B96255A0071F78C /* milkywayHD.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5707F6BF2B96255A0071F78C /* milkywayHD.jpg */; };
-		5728370C2B95B99E0096D3D8 /* milkyway.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5728370B2B95B99D0096D3D8 /* milkyway.jpg */; };
+		57191AF72B9F37FA00637711 /* MaterialProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57191AF62B9F37FA00637711 /* MaterialProperty.swift */; };
+		57191AFB2B9F3CA000637711 /* earth.obj in Resources */ = {isa = PBXBuildFile; fileRef = 57191AF92B9F3CA000637711 /* earth.obj */; };
+		57191AFC2B9F3CA000637711 /* earth.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 57191AFA2B9F3CA000637711 /* earth.mtl */; };
+		57191AFE2B9F40FB00637711 /* ForegroundRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57191AFD2B9F40FB00637711 /* ForegroundRenderer.swift */; };
+		57191B002B9F436700637711 /* ForegroundShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 57191AFF2B9F436700637711 /* ForegroundShaders.metal */; };
+		57191B042B9F4C9D00637711 /* earth8k.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 57191B032B9F4C9D00637711 /* earth8k.jpeg */; };
 		57345F2D2B907FA9002ACE66 /* SpaceShipGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57345F2C2B907FA9002ACE66 /* SpaceShipGameApp.swift */; };
 		57345F2F2B907FA9002ACE66 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57345F2E2B907FA9002ACE66 /* ContentView.swift */; };
 		57345F312B907FAA002ACE66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57345F302B907FAA002ACE66 /* Assets.xcassets */; };
@@ -30,12 +35,16 @@
 		57D13A192B97935300DF1E6C /* Helpers.metal in Sources */ = {isa = PBXBuildFile; fileRef = 57D13A182B97935300DF1E6C /* Helpers.metal */; };
 		57DC9B4A2B923DAB0008009F /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DC9B492B923DAB0008009F /* Transform.swift */; };
 		57DC9B4C2B9245CB0008009F /* BackgroundShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 57DC9B4B2B9245CB0008009F /* BackgroundShaders.metal */; };
-		57F3174E2B9538B800E8DFFE /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 57F3174D2B9538B800E8DFFE /* test.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5707F6BF2B96255A0071F78C /* milkywayHD.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = milkywayHD.jpg; sourceTree = "<group>"; };
-		5728370B2B95B99D0096D3D8 /* milkyway.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = milkyway.jpg; sourceTree = "<group>"; };
+		57191AF62B9F37FA00637711 /* MaterialProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialProperty.swift; sourceTree = "<group>"; };
+		57191AF92B9F3CA000637711 /* earth.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = earth.obj; sourceTree = "<group>"; };
+		57191AFA2B9F3CA000637711 /* earth.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = earth.mtl; sourceTree = "<group>"; };
+		57191AFD2B9F40FB00637711 /* ForegroundRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForegroundRenderer.swift; sourceTree = "<group>"; };
+		57191AFF2B9F436700637711 /* ForegroundShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ForegroundShaders.metal; sourceTree = "<group>"; };
+		57191B032B9F4C9D00637711 /* earth8k.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = earth8k.jpeg; sourceTree = "<group>"; };
 		57345F292B907FA9002ACE66 /* SpaceShipGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceShipGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57345F2C2B907FA9002ACE66 /* SpaceShipGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceShipGameApp.swift; sourceTree = "<group>"; };
 		57345F2E2B907FA9002ACE66 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,7 +70,6 @@
 		57D13A182B97935300DF1E6C /* Helpers.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Helpers.metal; sourceTree = "<group>"; };
 		57DC9B492B923DAB0008009F /* Transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
 		57DC9B4B2B9245CB0008009F /* BackgroundShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BackgroundShaders.metal; sourceTree = "<group>"; };
-		57F3174D2B9538B800E8DFFE /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +83,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		57191AF82B9F3C9500637711 /* Sphere */ = {
+			isa = PBXGroup;
+			children = (
+				57191AFA2B9F3CA000637711 /* earth.mtl */,
+				57191AF92B9F3CA000637711 /* earth.obj */,
+			);
+			path = Sphere;
+			sourceTree = "<group>";
+		};
 		57345F202B907FA9002ACE66 = {
 			isa = PBXGroup;
 			children = (
@@ -105,8 +122,7 @@
 				57345F4A2B9083AD002ACE66 /* Math */,
 				57DC9B492B923DAB0008009F /* Transform.swift */,
 				57345F302B907FAA002ACE66 /* Assets.xcassets */,
-				57F3174D2B9538B800E8DFFE /* test.jpg */,
-				5728370B2B95B99D0096D3D8 /* milkyway.jpg */,
+				57191B032B9F4C9D00637711 /* earth8k.jpeg */,
 				5707F6BF2B96255A0071F78C /* milkywayHD.jpg */,
 				57345F352B907FAA002ACE66 /* SpaceShipGame.entitlements */,
 				57345F322B907FAA002ACE66 /* Preview Content */,
@@ -138,6 +154,7 @@
 				57345F442B9081B6002ACE66 /* MainRenderer.swift */,
 				57345F6F2B91D7C4002ACE66 /* BackgroundRenderer.swift */,
 				57D13A112B977ED900DF1E6C /* MidgroundRenderer.swift */,
+				57191AFD2B9F40FB00637711 /* ForegroundRenderer.swift */,
 			);
 			path = Renderers;
 			sourceTree = "<group>";
@@ -150,6 +167,7 @@
 				57D13A182B97935300DF1E6C /* Helpers.metal */,
 				57DC9B4B2B9245CB0008009F /* BackgroundShaders.metal */,
 				57D13A152B9792F500DF1E6C /* MidgroundShaders.metal */,
+				57191AFF2B9F436700637711 /* ForegroundShaders.metal */,
 			);
 			path = Shaders;
 			sourceTree = "<group>";
@@ -165,10 +183,12 @@
 		57345F3F2B9080EA002ACE66 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				57345F692B91151C002ACE66 /* Vertex.swift */,
+				57191AF82B9F3C9500637711 /* Sphere */,
 				57345F482B9082E4002ACE66 /* Model.swift */,
+				57345F692B91151C002ACE66 /* Vertex.swift */,
 				57345F672B9100CA002ACE66 /* Quad.swift */,
 				57345F6B2B91157F002ACE66 /* VertexDescriptor.swift */,
+				57191AF62B9F37FA00637711 /* MaterialProperty.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -255,10 +275,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57191AFC2B9F3CA000637711 /* earth.mtl in Resources */,
+				57191B042B9F4C9D00637711 /* earth8k.jpeg in Resources */,
 				57345F342B907FAA002ACE66 /* Preview Assets.xcassets in Resources */,
 				57345F312B907FAA002ACE66 /* Assets.xcassets in Resources */,
-				5728370C2B95B99E0096D3D8 /* milkyway.jpg in Resources */,
-				57F3174E2B9538B800E8DFFE /* test.jpg in Resources */,
+				57191AFB2B9F3CA000637711 /* earth.obj in Resources */,
 				5707F6C02B96255A0071F78C /* milkywayHD.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,10 +296,13 @@
 				57345F702B91D7C4002ACE66 /* BackgroundRenderer.swift in Sources */,
 				57D13A122B977ED900DF1E6C /* MidgroundRenderer.swift in Sources */,
 				57345F6E2B91D5B9002ACE66 /* GameScene.swift in Sources */,
+				57191AF72B9F37FA00637711 /* MaterialProperty.swift in Sources */,
 				57345F492B9082E4002ACE66 /* Model.swift in Sources */,
 				57345F682B9100CA002ACE66 /* Quad.swift in Sources */,
 				57D13A192B97935300DF1E6C /* Helpers.metal in Sources */,
+				57191B002B9F436700637711 /* ForegroundShaders.metal in Sources */,
 				57DC9B4C2B9245CB0008009F /* BackgroundShaders.metal in Sources */,
+				57191AFE2B9F40FB00637711 /* ForegroundRenderer.swift in Sources */,
 				57345F432B908124002ACE66 /* MetalView.swift in Sources */,
 				57345F6C2B91157F002ACE66 /* VertexDescriptor.swift in Sources */,
 				57345F752B91FC70002ACE66 /* Utility.swift in Sources */,

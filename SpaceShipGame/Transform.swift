@@ -18,6 +18,6 @@ struct Transform {
         let translationMatrix = float4x4(translation: translation)
         let rotationMatrix = float4x4(rotation: rotation)
         let scale = float4x4(scale: scale)
-        return scale * rotationMatrix * translationMatrix
+        return translationMatrix * rotationMatrix * scale
     }
 }

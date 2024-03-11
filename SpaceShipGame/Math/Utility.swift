@@ -97,6 +97,19 @@ extension float4x4 {
         columns = (X, Y, Z, W)
     }
     
+    // MARK: - Left handed projection matrix
+    init(projectionFov fov: Float, near: Float, far: Float, aspect: Float, lhs: Bool = true) {
+        let y = 1 / tan(fov * 0.5)
+        let x = y / aspect
+        let z = lhs ? far / (far - near) : far / (near - far)
+        let X = SIMD4<Float>( x,  0,  0,  0)
+        let Y = SIMD4<Float>( 0,  y,  0,  0)
+        let Z = lhs ? SIMD4<Float>( 0,  0,  z, 1) : SIMD4<Float>( 0,  0,  z, -1)
+        let W = lhs ? SIMD4<Float>( 0,  0,  z * -near,  0) : SIMD4<Float>( 0,  0,  z * near,  0)
+        self.init()
+        columns = (X, Y, Z, W)
+    }
+    
     // For normal model matrix
     var upperleft: float3x3 {
         float3x3(

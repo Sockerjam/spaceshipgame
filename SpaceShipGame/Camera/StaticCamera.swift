@@ -23,6 +23,10 @@ class StaticCamera {
         return float4x4(orthographic: rect, near: near, far: far)
     }
     
+    var projectionMatrix: float4x4 {
+        float4x4(projectionFov: Float(70).degreesToRadians, near: 0.1, far: 10, aspect: Float(aspect))
+    }
+    
     func update(size: CGSize) {
         aspect = size.width / size.height
     }

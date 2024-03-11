@@ -19,7 +19,9 @@ enum TextureLoader {
             .generateMipmaps: NSNumber(value: true)
         ]
         
-        guard let filePath = Bundle.main.url(forResource: fileName, withExtension: "jpg") else {
+        let fileExtension = URL(fileURLWithPath: fileName).pathExtension.isEmpty ? "jpg" : nil
+    
+        guard let filePath = Bundle.main.url(forResource: fileName, withExtension: fileExtension) else {
             print("Texture url not found")
             return nil
         }

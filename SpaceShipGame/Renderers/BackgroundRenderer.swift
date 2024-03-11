@@ -42,7 +42,7 @@ class BackgroundRenderer: Renderer {
         self.depthStencilState = device.makeDepthStencilState(descriptor: depthStencilDescriptor)
     }
     
-    override func render(commandEncoder: MTLRenderCommandEncoder, uniform: Uniform, time: Float) {
+    override func render(commandEncoder: MTLRenderCommandEncoder, uniform: Uniform, elapsedTime: Float) {
         
         guard let pipelineState = pipelineState,
               let depthStencilState = depthStencilState
@@ -53,7 +53,7 @@ class BackgroundRenderer: Renderer {
         commandEncoder.setRenderPipelineState(pipelineState)
         commandEncoder.setDepthStencilState(depthStencilState)
         
-        elapsedTime += time
+        var elapsedTime = elapsedTime
         
         var uniform = uniform
         

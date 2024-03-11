@@ -19,9 +19,11 @@ class MainRenderer: NSObject {
     private var gameScene: GameScene
     private var backgroundRenderer: BackgroundRenderer
     private var midgroundRenderer: MidgroundRenderer
+    private var foregroundRenderer: ForegroundRenderer
     
     private var uniform = Uniform()
     private var startTime: Double = CFAbsoluteTimeGetCurrent()
+    private var elapsedTime: Float = 0
     
     init(metalView: MTKView) throws {
         
@@ -37,6 +39,7 @@ class MainRenderer: NSObject {
         self.gameScene = GameScene()
         self.backgroundRenderer = BackgroundRenderer(gameScene: gameScene, device: MainRenderer.device)
         self.midgroundRenderer = MidgroundRenderer(gameScene: gameScene, device: MainRenderer.device)
+        self.foregroundRenderer = ForegroundRenderer(gameScene: gameScene, device: MainRenderer.device)
         
         super.init()
         metalView.depthStencilPixelFormat = .depth32Float
@@ -67,16 +70,20 @@ extension MainRenderer: MTKViewDelegate {
         
         let currentTime = CFAbsoluteTimeGetCurrent()
         let deltaTime = Float(currentTime - startTime)
+        elapsedTime += deltaTime
         startTime = currentTime
         
         gameScene.update(time: deltaTime)
         
         uniform.viewMatrix = gameScene.staticCamera.viewMatrix
-        uniform.projectionMatrix = gameScene.staticCamera.orthographicMatrix
+        uniform.projectionMatrix = gameScene.staticCamera.projectionMatrix
         
-        backgroundRenderer.render(commandEncoder: commandEncoder, uniform: uniform, time: deltaTime)
+        backgroundRenderer.render(commandEncoder: commandEncoder, uniform: uniform, elapsedTime: elapsedTime)
         
-        midgroundRenderer.render(commandEncoder: commandEncoder, uniform: uniform, time: deltaTime)
+        midgroundRenderer.render(commandEncoder: commandEncoder, uniform: uniform, elapsedTime: elapsedTime)
+        
+        foregroundRenderer.render(commandEncoder: commandEncoder, uniform: uniform, elapsedTime: elapsedTime)
+        
         
         commandEncoder.endEncoding()
         guard let drawable = view.currentDrawable else { return }

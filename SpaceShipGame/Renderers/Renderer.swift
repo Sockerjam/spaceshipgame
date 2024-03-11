@@ -12,7 +12,6 @@ class Renderer {
     var pipelineState: MTLRenderPipelineState?
     var depthStencilState: MTLDepthStencilState?
     var gameScene: GameScene
-    var elapsedTime: Float = 0
     
     init(gameScene: GameScene, device: MTLDevice?) {
         
@@ -29,7 +28,7 @@ class Renderer {
         fatalError("Must be overriden")
     }
     
-    func render(commandEncoder: MTLRenderCommandEncoder, uniform: Uniform, time: Float) {
+    func render(commandEncoder: MTLRenderCommandEncoder, uniform: Uniform, elapsedTime: Float) {
         fatalError("Must be overriden")
     }
 }

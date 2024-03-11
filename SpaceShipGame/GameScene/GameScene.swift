@@ -21,6 +21,10 @@ class GameScene {
         Quad(depth: 0.9, device: MainRenderer.device)
     }()
     
+    lazy var foregroundModel: Model = {
+        Model(fileName: "earth", device: MainRenderer.device)
+    }()
+    
     let staticCamera = StaticCamera()
         
     init() {

@@ -14,6 +14,7 @@
 typedef enum {
     BackgroundVertexIndex = 0,
     BackgroundTextureIndex = 0,
+    ForegroundTextureIndex = 1,
     UniformIndex = 1,
     TimeIndex = 2
 } BufferIndices;
