@@ -10,11 +10,15 @@ import MetalKit
 class GameScene {
     
     lazy var backgroundModel: Quad = {
-        Quad(device: MainRenderer.device)
+        Quad(depth: 1, device: MainRenderer.device)
     }()
     
     lazy var backgroundTexture: MTLTexture? = {
         TextureLoader.texture(from: "milkywayHD", device: MainRenderer.device)
+    }()
+    
+    lazy var midgroundModel: Quad = {
+        Quad(depth: 0.9, device: MainRenderer.device)
     }()
     
     let staticCamera = StaticCamera()

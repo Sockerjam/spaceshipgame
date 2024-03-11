@@ -15,7 +15,7 @@ class StaticCamera {
     var far: Float = 10
     
     var viewMatrix: float4x4 {
-        return float4x4(translation: [0, 0, -1]).inverse
+        return float4x4(translation: [0, 0, 0]).inverse
     }
     
     var orthographicMatrix: float4x4 {

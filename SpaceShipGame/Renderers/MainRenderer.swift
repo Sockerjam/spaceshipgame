@@ -63,11 +63,6 @@ extension MainRenderer: MTKViewDelegate {
             return
         }
         
-//        renderPassDescriptor.colorAttachments[0].loadAction = .clear
-//        renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColorMake(0.0, 0.0, 0.0, 1.0)
-//        renderPassDescriptor.depthAttachment.loadAction = .clear
-//        renderPassDescriptor.depthAttachment.clearDepth = 1.0
-        
         guard  let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor) else { return }
         
         let currentTime = CFAbsoluteTimeGetCurrent()
@@ -81,7 +76,7 @@ extension MainRenderer: MTKViewDelegate {
         
         backgroundRenderer.render(commandEncoder: commandEncoder, uniform: uniform, time: deltaTime)
         
-//        midgroundRenderer.render(commandEncoder: commandEncoder, uniform: uniform, time: deltaTime)
+        midgroundRenderer.render(commandEncoder: commandEncoder, uniform: uniform, time: deltaTime)
         
         commandEncoder.endEncoding()
         guard let drawable = view.currentDrawable else { return }
