@@ -21,13 +21,6 @@ class ForegroundRenderer: Renderer {
         pipelineDescriptor.vertexFunction = vertex
         pipelineDescriptor.fragmentFunction = fragment
         pipelineDescriptor.vertexDescriptor = MTKMetalVertexDescriptorFromModelIO(.mdlVertexDescriptor)
-//        pipelineDescriptor.colorAttachments[0].isBlendingEnabled = true
-//        pipelineDescriptor.colorAttachments[0].rgbBlendOperation = .add
-//        pipelineDescriptor.colorAttachments[0].alphaBlendOperation = .add
-//        pipelineDescriptor.colorAttachments[0].sourceRGBBlendFactor = .sourceAlpha
-//        pipelineDescriptor.colorAttachments[0].destinationRGBBlendFactor = .oneMinusSourceAlpha
-//        pipelineDescriptor.colorAttachments[0].sourceAlphaBlendFactor = .sourceAlpha
-//        pipelineDescriptor.colorAttachments[0].destinationAlphaBlendFactor = .oneMinusSourceAlpha
         pipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
         pipelineDescriptor.depthAttachmentPixelFormat = .depth32Float
         
@@ -59,10 +52,6 @@ class ForegroundRenderer: Renderer {
         
         commandEncoder.setRenderPipelineState(pipelineState)
         commandEncoder.setDepthStencilState(depthStencilState)
-        
-        gameScene.foregroundModel.transform.translation = [0, 0, 0.8]
-        gameScene.foregroundModel.transform.rotation = [elapsedTime / 4, elapsedTime / 4, 0]
-        gameScene.foregroundModel.transform.scale = [0.05, 0.05, 0.05]
         
         gameScene.foregroundModel.render(commandEncoder: commandEncoder, uniform: uniform, time: elapsedTime)
     }

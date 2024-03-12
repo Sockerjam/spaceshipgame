@@ -9,6 +9,8 @@
 #define Helpers_h
 #include <metal_stdlib>
 
+using namespace metal;
+
 struct VertexIn {
     float4 position [[attribute(0)]];
     float2 uv [[attribute(1)]];
@@ -21,6 +23,8 @@ struct VertexOut {
 };
 
 float2 rotateUV(float2 uv);
+
+float4x4 rotatePlanet(float angle);
 
 
 #endif /* Helpers_h */

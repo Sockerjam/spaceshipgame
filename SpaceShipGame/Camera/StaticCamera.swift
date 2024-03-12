@@ -20,7 +20,7 @@ class StaticCamera {
     
     var orthographicMatrix: float4x4 {
         let rect = CGRect(x: -viewSize * aspect * 0.5, y: viewSize * 0.5, width: viewSize * aspect, height: viewSize)
-        return float4x4(orthographic: rect, near: near, far: far)
+        return float4x4(orthographic: rect, near: near, far: 10)
     }
     
     var projectionMatrix: float4x4 {

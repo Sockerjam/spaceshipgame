@@ -6,12 +6,16 @@
 //
 
 import MetalKit
+import simd
 
 class Model {
     
     var transform: Transform = Transform()
-    var mtkMesh: MTKMesh?
-    var materialProperties: [MaterialProperty] = []
+    private var mtkMesh: MTKMesh?
+    private var materialProperties: [MaterialProperty] = []
+    private var instanceCount = 100
+    private var instanceBuffer: MTLBuffer?
+    
     
     init(fileName: String, device: MTLDevice?) {
         
@@ -30,6 +34,7 @@ class Model {
             do {
                 mtkMesh = try MTKMesh(mesh: modelMesh, device: device)
                 loadMaterial(mdlMesh: modelMesh, device: device)
+                createInstanceBuffer(device: device)
             } catch {
                 print("MTK Mesh Error")
             }
@@ -64,6 +69,26 @@ class Model {
         }
     }
     
+    private func createInstanceBuffer(device: MTLDevice) {
+        
+        var perInstanceUniforms: [PerInstanceUniform] = []
+        for index in 1...instanceCount {
+            let random = Float.random(in: 0.1...1)
+            let translation = float4x4(translation: [7 * sin(Float(index)), 5 * Float(index), 8])
+            let scale = float4x4(scale: [0.1, 0.1, 0.1])
+            let color = SIMD4<Float>(1, random, random, 1)
+            let speed: Float = Float.random(in: 1...10)
+            let perInstanceUniform = PerInstanceUniform(modelMatrix: translation * scale, color: color, speed: speed)
+            perInstanceUniforms.append(perInstanceUniform)
+        }
+        
+        guard let instanceBuffer = device.makeBuffer(bytes: &perInstanceUniforms, length: MemoryLayout<PerInstanceUniform>.size * instanceCount) else {
+            return
+        }
+        
+        self.instanceBuffer = instanceBuffer
+    }
+    
 }
 
 extension Model {
@@ -73,12 +98,12 @@ extension Model {
         guard let mtkMesh = mtkMesh else { return }
         
         var uniform = uniform
-        uniform.modelMatrix = transform.modelMatrix
         
         var time = time
         
         commandEncoder.setVertexBytes(&uniform, length: MemoryLayout<Uniform>.size, index: UniformIndex.index)
         commandEncoder.setVertexBytes(&time, length: MemoryLayout<Float>.size, index: TimeIndex.index)
+        commandEncoder.setVertexBuffer(instanceBuffer, offset: 0, index: PerInstanceUniformIndex.index)
         
         for (index, meshBuffer) in mtkMesh.vertexBuffers.enumerated() {
             commandEncoder.setVertexBuffer(meshBuffer.buffer, offset: 0, index: index)
@@ -95,7 +120,8 @@ extension Model {
                 indexCount: submesh.indexCount,
                 indexType: submesh.indexType,
                 indexBuffer: submesh.indexBuffer.buffer,
-                indexBufferOffset: submesh.indexBuffer.offset)
+                indexBufferOffset: submesh.indexBuffer.offset,
+                instanceCount: instanceCount)
         }
     }
 }

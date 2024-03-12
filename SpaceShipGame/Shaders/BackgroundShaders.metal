@@ -16,8 +16,6 @@ vertex VertexOut backgroundVertex(const VertexIn in [[stage_in]],
                                   constant Uniform &uniform [[buffer(UniformIndex)]])
 {
     float4 position = in.position;
-    float2 uvRotated = rotateUV(in.uv);
-    float2 scaledUV = uvRotated;
     VertexOut out {
         .position = position,
         .uv = in.uv,

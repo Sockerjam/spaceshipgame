@@ -16,7 +16,8 @@ typedef enum {
     BackgroundTextureIndex = 0,
     ForegroundTextureIndex = 1,
     UniformIndex = 1,
-    TimeIndex = 2
+    TimeIndex = 2,
+    PerInstanceUniformIndex = 3
 } BufferIndices;
 
 typedef struct {
@@ -24,6 +25,12 @@ typedef struct {
     matrix_float4x4 viewMatrix;
     matrix_float4x4 projectionMatrix;
 } Uniform;
+
+typedef struct {
+    matrix_float4x4 modelMatrix;
+    simd_float4 color;
+    float speed;
+} PerInstanceUniform;
 
 
 

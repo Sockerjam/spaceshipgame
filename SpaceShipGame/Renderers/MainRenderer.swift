@@ -76,7 +76,7 @@ extension MainRenderer: MTKViewDelegate {
         gameScene.update(time: deltaTime)
         
         uniform.viewMatrix = gameScene.staticCamera.viewMatrix
-        uniform.projectionMatrix = gameScene.staticCamera.projectionMatrix
+        uniform.projectionMatrix = gameScene.staticCamera.orthographicMatrix
         
         backgroundRenderer.render(commandEncoder: commandEncoder, uniform: uniform, elapsedTime: elapsedTime)
         
