@@ -53,6 +53,10 @@ class ForegroundRenderer: Renderer {
         commandEncoder.setRenderPipelineState(pipelineState)
         commandEncoder.setDepthStencilState(depthStencilState)
         
+        var sunLight = gameScene.lightScene.sunLight
+        
+        commandEncoder.setFragmentBytes(&sunLight, length: MemoryLayout<Light>.size, index: LightIndex.index)
+        
         gameScene.foregroundModel.render(commandEncoder: commandEncoder, uniform: uniform, time: elapsedTime)
     }
 }

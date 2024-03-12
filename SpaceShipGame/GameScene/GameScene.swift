@@ -25,6 +25,8 @@ class GameScene {
         Model(fileName: "earth", device: MainRenderer.device)
     }()
     
+    let lightScene = LightScene()
+    
     let staticCamera = StaticCamera()
         
     init() {

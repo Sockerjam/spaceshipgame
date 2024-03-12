@@ -8,6 +8,7 @@
 #ifndef Helpers_h
 #define Helpers_h
 #include <metal_stdlib>
+#include "Common.h"
 
 using namespace metal;
 
@@ -25,6 +26,10 @@ struct VertexOut {
 float2 rotateUV(float2 uv);
 
 float4x4 rotatePlanet(float angle);
+
+float3 phongLighting(float3 baseColor, float3 normal, constant Light *light);
+
+float3 randomColor(float3 baseColor);
 
 
 #endif /* Helpers_h */

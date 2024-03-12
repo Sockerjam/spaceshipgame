@@ -73,12 +73,16 @@ class Model {
         
         var perInstanceUniforms: [PerInstanceUniform] = []
         for index in 1...instanceCount {
+            
             let random = Float.random(in: 0.1...1)
-            let translation = float4x4(translation: [7 * sin(Float(index)), 5 * Float(index), 8])
-            let scale = float4x4(scale: [0.1, 0.1, 0.1])
-            let color = SIMD4<Float>(1, random, random, 1)
-            let speed: Float = Float.random(in: 1...10)
-            let perInstanceUniform = PerInstanceUniform(modelMatrix: translation * scale, color: color, speed: speed)
+            let randomScale = Float.random(in: 0.01...0.5)
+            
+            let translation = float4x4(translation: [7 * sin(Float(index)), 5 * Float(index), randomScale * 10])
+            let scale = float4x4(scale: [randomScale, randomScale, randomScale])
+            let color = SIMD3<Float>(1, random, random)
+            let speed: Float = (1 - randomScale) * 10
+            let modelMatrix: float4x4 = translation * scale
+            let perInstanceUniform = PerInstanceUniform(modelMatrix: modelMatrix, color: color, speed: speed)
             perInstanceUniforms.append(perInstanceUniform)
         }
         

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		570745922BA08B890093179C /* LightScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570745912BA08B890093179C /* LightScene.swift */; };
 		5707F6C02B96255A0071F78C /* milkywayHD.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5707F6BF2B96255A0071F78C /* milkywayHD.jpg */; };
 		57191AF72B9F37FA00637711 /* MaterialProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57191AF62B9F37FA00637711 /* MaterialProperty.swift */; };
 		57191AFE2B9F40FB00637711 /* ForegroundRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57191AFD2B9F40FB00637711 /* ForegroundRenderer.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		570745912BA08B890093179C /* LightScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightScene.swift; sourceTree = "<group>"; };
 		5707F6BF2B96255A0071F78C /* milkywayHD.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = milkywayHD.jpg; sourceTree = "<group>"; };
 		57191AF62B9F37FA00637711 /* MaterialProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialProperty.swift; sourceTree = "<group>"; };
 		57191AFD2B9F40FB00637711 /* ForegroundRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForegroundRenderer.swift; sourceTree = "<group>"; };
@@ -83,6 +85,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		570745902BA08B760093179C /* Light */ = {
+			isa = PBXGroup;
+			children = (
+				570745912BA08B890093179C /* LightScene.swift */,
+			);
+			path = Light;
+			sourceTree = "<group>";
+		};
 		57191AF82B9F3C9500637711 /* Sphere */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +124,7 @@
 				57345F2C2B907FA9002ACE66 /* SpaceShipGameApp.swift */,
 				57345F3B2B907FB8002ACE66 /* Views */,
 				57345F3C2B907FC1002ACE66 /* Renderers */,
+				570745902BA08B760093179C /* Light */,
 				57345F462B9081E9002ACE66 /* GameScene */,
 				57345F472B9081EF002ACE66 /* Camera */,
 				57345F3F2B9080EA002ACE66 /* Models */,
@@ -298,6 +309,7 @@
 				57345F6E2B91D5B9002ACE66 /* GameScene.swift in Sources */,
 				57191AF72B9F37FA00637711 /* MaterialProperty.swift in Sources */,
 				57345F492B9082E4002ACE66 /* Model.swift in Sources */,
+				570745922BA08B890093179C /* LightScene.swift in Sources */,
 				57345F682B9100CA002ACE66 /* Quad.swift in Sources */,
 				57D13A192B97935300DF1E6C /* Helpers.metal in Sources */,
 				57191B002B9F436700637711 /* ForegroundShaders.metal in Sources */,
